@@ -16,7 +16,10 @@ public class TodoController {
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public Todo createTodo(@RequestBody Todo todo) {
-        return todoRepository.save(todo);
+        Todo newTodo = new Todo(todo.getDescription()+"tstephem", todo.getDetails(), todo.isDone());
+        // newTodo.setTitle(todo.getTitle() + "tstephem");
+        // newTodo.setCompleted(todo.isCompleted());
+        return todoRepository.save(newTodo);
     }
 
     @GetMapping("/")
